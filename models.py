@@ -1,5 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from app_config import db
 
 
 class Quests(db.Model):
