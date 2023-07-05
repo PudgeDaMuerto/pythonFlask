@@ -1,0 +1,17 @@
+version: "3.8"
+name: python-flask
+
+services:
+  web:
+    build: .
+    command: python3 -m gunicorn app:app --reload
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      GUNICORN_CMD_ARGS: --bind=0.0.0.0:8000 --workers=3
+    volumes:
+      - type: bind
+        source: ./flask_app/instance/survey.db
+        target: /app/flask_app/instance/survey.db
