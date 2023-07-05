@@ -1,0 +1,64 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<div>
+    <h1>Графики: </h1>
+</div>
+<br><br>
+<div id="graphs">
+    <div>
+        {{context['plot1'].div | safe}}
+    </div>
+    <div>
+        {{context['plot2'].div | safe}}
+    </div>
+</div>
+<br><br>
+<div id="graph3">
+    <div>
+        {{context['plot3'].div | safe}}
+    </div>
+    <div style="line-height: 1; text-align: justify" class="small-block">
+        <h5>Вопросы: </h5>
+        {% for k,v in context['quests_dict'].items() %}
+            <p style="font-size: smaller; line-height: 1">{{k}} - {{v}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    #graphs{
+        width: 100%;
+        overflow: hidden;
+    }
+    #graph3{
+        width: 100%;
+        overflow: hidden;
+    }
+    #graphs>div{
+        width: 550px;
+        display: inline-block;
+    }
+    #graph3>div{
+        width: 550px;
+        display: inline-block;
+    }
+    .small-block{
+        vertical-align: top;
+    }
+</style>
+
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.0.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.0.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.0.0.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.0.0.min.js"
+        crossorigin="anonymous"></script>
+
+{{context['plot1'].script | safe}}
+{{context['plot2'].script | safe}}
+{{context['plot3'].script | safe}}
+{% endblock %}
