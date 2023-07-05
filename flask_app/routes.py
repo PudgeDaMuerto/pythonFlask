@@ -34,7 +34,7 @@ def index():
     return redirect(url_for('index'))
 
 
-@app.route('/admin')
+@app.route('/admin/')
 @login_required
 def admin_panel():
     return render_template(url_for('admin.index'))
@@ -47,12 +47,12 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/successful')
+@app.route('/successful', methods=['POST', 'GET'])
 def succ():
     return render_template('successful.html')
 
 
-@app.route('/unsuccessful')
+@app.route('/unsuccessful', methods=['POST', 'GET'])
 def unsucc():
     return render_template('unsuccessful.html')
 
